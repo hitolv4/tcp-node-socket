@@ -10,7 +10,7 @@ server.on('connection', (socket) => {
 
   socket.on('data', (data) => {
     console.log(`data from ${remoteaddress}  ${data}`.green)
-    socket.write(`hello ${remoteaddress} you send ${data}`)
+    socket.write(`Server says :hello ${remoteaddress} you send ${data}`)
   })
 
   socket.once('close', () => {
