@@ -1,0 +1,5 @@
+sendData('  CONIBSV016131338026634988CL        ') // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
+�CONIBSV016131338026634988CL         CL 26634988MARCANO ZAMORA, MARIA                        marijo_0519@hotmail.com                  4243355963NN            S2009201903101982 FF
+
+sendData('  CONIBSV008749897000000000CL        ') // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
+�CONIBSV008749897000000000CL         CL 26596812QUINTERO CARRILLO, JOSE                      QUINTEROJH18@GMAIL.COM                   4245282027NN            S2009201918031965 FF

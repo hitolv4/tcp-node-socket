@@ -1,5 +1,9 @@
 const net = require('net');
 const colors = require('colors')
+const {
+  spacios,
+  comibs
+} = require('./param')
 const port = 9000;
 
 let server = net.createServer();
@@ -10,7 +14,13 @@ server.on('connection', (socket) => {
 
   socket.on('data', (data) => {
     console.log(`data from ${remoteaddress}  ${data}`.green)
-    socket.write(`Server says :hello ${remoteaddress} you send ${data}`)
+
+    if (data.length === spacios + comibs) {
+      console.log('String cumple con parametros')
+      socket.write(`Server says :hello ${remoteaddress} you send ${data}`)
+    } else {
+      console.log(`string no cumple con parametros el string mide ${data.length}`)
+    }
   })
 
   socket.once('close', () => {

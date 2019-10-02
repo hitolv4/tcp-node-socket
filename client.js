@@ -1,104 +1,118 @@
-const net = require('net');
-const readlineSync = require('readline-sync');
-const color = require('colors');
+const net = require("net");
+const readlineSync = require("readline-sync");
+const color = require("colors");
 
-console.log('cliente')
+console.log("cliente");
 
-const HOST = '127.0.0.1';
-const PORT = 9000;
+const HOST = "127.0.0.1"; // 10.112.2.11
+const PORT = 9000; // 8047
 
 let client = null;
 
 const openConnetion = () => {
   if (client) {
-    console.log('connection is already open'.red)
+    console.log("connection is already open".red);
     setTimeout(() => {
-      menu()
+      menu();
     }, 0);
-    return
+    return;
   }
   client = new net.Socket();
 
-  client.on('error', (err) => {
+  client.on("error", err => {
     client.destroy();
     console.error(`ERROR: can't open connection ${err.message}`.red);
-    client = null
+    client = null;
     setTimeout(() => {
-      menu()
+      menu();
     }, 0);
-  })
+  });
 
-  client.on("data", (data) => {
-    console.log(`Received ${data}`.cyan)
+  client.on("data", data => {
+    console.log(data.toString().red);
     setTimeout(() => {
-      menu()
+      menu();
     }, 0);
-  })
+  });
 
   client.connect(PORT, HOST, () => {
-    console.log('Connection Opened Successfully'.green)
+    console.log("Connection Opened Successfully".green);
     setTimeout(() => {
-      menu()
+      menu();
     }, 0);
-  })
-}
+  });
+};
 
-const sendData = (data) => {
+const sendData = data => {
   if (!client) {
-    console.log('Connection is not open or closed'.red)
+    console.log("Connection is not open or closed".red);
     setTimeout(() => {
-      menu()
-    }, 0)
-    return
+      menu();
+    }, 0);
+    return;
   }
-  client.write(data)
-}
+  client.write(data);
+};
 
 const closeConnection = () => {
   if (!client) {
-    console.log('Connection is not open or closed'.red)
+    console.log("Connection is not open or closed".red);
     setTimeout(() => {
-      menu()
-    }, 0)
-    return
+      menu();
+    }, 0);
+    return;
   }
   client.destroy();
-  client = null
-  console.log('connection closed'.yellow)
+  client = null;
+  console.log("connection closed".yellow);
   setTimeout(() => {
-    menu()
-  }, 0)
-}
+    menu();
+  }, 0);
+};
 
 const menu = () => {
-  let lineRead = readlineSync.question(`\n\n Enter option (1- Open, 2-Send, 3-Close, 4-Quit):`.black);
+  let lineRead = readlineSync.question(
+    `\n\n Enter option (1- Open, 2-Send, 3-Close, 4-Quit):`.black
+  );
   switch (lineRead) {
-    case '1':
-      console.log('Option 1 selected');
-      openConnetion()
+    case "1":
+      console.log("Option 1 selected");
+      openConnetion();
 
       break;
-    case '2':
-      console.log('Option 2 selected')
-      let data = readlineSync.question(`\n\n Enter msj:`.green);
-      sendData(data)
+    case "2":
+      console.log("Option 2 selected");
+      let data = `    CONIBSV008749897000000000CL        `;
+      sendData(data);
       break;
-    case '3':
-      console.log('Option 3 selected')
-      closeConnection()
+    case "3":
+      console.log("Option 3 selected");
+      closeConnection();
 
       break;
-    case '4':
-      console.log('Option 4 selected')
+    case "4":
+      console.log("Option 4 selected");
 
       break;
     default:
       setTimeout(() => {
-        menu()
-      }, 0)
+        menu();
+      }, 0);
       break;
   }
-}
+};
 setTimeout(() => {
-  menu()
-}, 0)
+  menu();
+}, 0);
+openConnetion()
+sendData('  CONIBSV008749897000000000TD        ') // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
+//let espacios = (w) => {
+//  let white = ' '
+//  let espacios = white.padEnd(w)
+//
+//  console.log(espacios.split(" ").length - 1)
+//  return espacios
+//}
+//let servicio = `  000000008749897${espacios(84)}a`
+//console.log(servicio)
+//sendData(`  000000008749897${espacios(84)}`) // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde

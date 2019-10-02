@@ -1,0 +1,77 @@
+
+{
+    "servicios":{
+        "conibs":{
+            "tiposConsulta":{
+                "CL":"datos del Cliente",
+                "CT":"Cuentas",
+                "TC":"Tarjetas de Credito",
+                "TD":"Tarjeta de Debito",
+                "CR":"Creditos",
+                "CI":"Cupos de Internet",
+                "TA":"Tarjeta de Alimentacion",
+                "IV":"Inversiones",
+                "CV":"Cupos de Viajeros",
+                "Al":"Todos los Instrumentos"
+            },
+            "parametros":{
+                "servicio":"6",
+                "nacionalidad":"1",
+                "cedula":"9",
+                "numeroCiente":"9",
+                "tipoConsulta":"2",
+                "paginas":"4",
+                "caracteres":"4"
+            },
+            "retorno":{
+                "CL":{
+                    "consulta":"3",
+                    "numeroCliente":"9",
+                    "nombre":"45",
+                    "email":"40",
+                    "telefonoCelular":"11",
+                    "clienteSisa":"1",
+                    "clientePrestaciones":"1",
+                    "codigoServicioNomina":"6",
+                    "codigoServicioProveedores":"6",
+                    "diaHabil":"1",
+                    "proximoDiaHabli":"8",
+                    "fechaNaciomento":"8"
+                }
+            }
+        }
+    },
+    "cliente":{
+        "16131338":{
+            "nacionalidad":"V",
+            "cedula":"16131338",
+            "numeroDeCliente":"26634988",
+            "nombre":"MARCANO ZAMORA, MARIA",
+            "email":"marijo_0519@hotmail.com",
+            "telefonoCel":"4243355963",
+            "sisa":"N",
+            "prestaciones":"N",
+            "codNomina":"",
+            "codProveedor":"",
+            "diaHabilConsulta":"S",
+            "proximoDiaHabil":"01011234",
+            "fechaNacimiento":"03101982"
+        },
+        "8749897":{
+            "nacionalidad":"V",
+            "cedula":"8749897",
+            "numeroDeCliente":"26596812",
+            "nombre":"QUINTERO CARRILLO, JOSE",
+            "email":"QUINTEROJH18@GMAIL.COM",
+            "telefonoCel":"4245282027",
+            "sisa":"N",
+            "prestaciones":"N",
+            "codNomina":"",
+            "codProveedor":"",
+            "diaHabilConsulta":"S",
+            "proximoDiaHabil":"01011234",
+            "fechaNacimiento":"18031965"
+        }
+    }
+}
+
