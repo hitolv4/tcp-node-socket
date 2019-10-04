@@ -1,20 +1,16 @@
 const net = require("net");
-const readlineSync = require("readline-sync");
 const color = require("colors");
 
 console.log("cliente");
 
-const HOST = "127.0.0.1"; // 10.112.2.11
-const PORT = 9000; // 8047
+const HOST = "127.0.0.1"; //  10.112.2.11
+const PORT = 9000; //   8047
 
 let client = null;
 
 const openConnetion = () => {
   if (client) {
     console.log("connection is already open".red);
-    setTimeout(() => {
-      menu();
-    }, 0);
     return;
   }
   client = new net.Socket();
@@ -23,32 +19,20 @@ const openConnetion = () => {
     client.destroy();
     console.error(`ERROR: can't open connection ${err.message}`.red);
     client = null;
-    setTimeout(() => {
-      menu();
-    }, 0);
   });
 
   client.on("data", data => {
     console.log(data.toString().red);
-    setTimeout(() => {
-      menu();
-    }, 0);
   });
 
   client.connect(PORT, HOST, () => {
     console.log("Connection Opened Successfully".green);
-    setTimeout(() => {
-      menu();
-    }, 0);
   });
 };
 
 const sendData = data => {
   if (!client) {
     console.log("Connection is not open or closed".red);
-    setTimeout(() => {
-      menu();
-    }, 0);
     return;
   }
   client.write(data);
@@ -57,62 +41,48 @@ const sendData = data => {
 const closeConnection = () => {
   if (!client) {
     console.log("Connection is not open or closed".red);
-    setTimeout(() => {
-      menu();
-    }, 0);
     return;
   }
   client.destroy();
   client = null;
   console.log("connection closed".yellow);
-  setTimeout(() => {
-    menu();
-  }, 0);
 };
 
-const menu = () => {
-  let lineRead = readlineSync.question(
-    `\n\n Enter option (1- Open, 2-Send, 3-Close, 4-Quit):`.black
-  );
-  switch (lineRead) {
-    case "1":
-      console.log("Option 1 selected");
-      openConnetion();
+const sendFull = (async (servicio, nacionalidad, ci, consulta) => {
+  //await sendData('  CONIBSV013112617000000000CL        ') // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
+  let format = await serviceCall(servicio, nacionalidad, ci, numeroCliente = '000000000', consulta)
+  console.log(`  ${format}        `)
+  await sendData(`  ${format}        `) // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
+})
 
-      break;
-    case "2":
-      console.log("Option 2 selected");
-      let data = `    CONIBSV008749897000000000CL        `;
-      sendData(data);
-      break;
-    case "3":
-      console.log("Option 3 selected");
-      closeConnection();
-
-      break;
-    case "4":
-      console.log("Option 4 selected");
-
-      break;
-    default:
-      setTimeout(() => {
-        menu();
-      }, 0);
-      break;
+const serviceCall = ((servicio, nacionalidad, ci, numeroCliente = '000000000', consulta) => {
+  let servicioU = String(servicio).toUpperCase()
+  let nacionalidadU = String(nacionalidad).toUpperCase()
+  let ciC = complete(ci, 9, 0)
+  let consultaU = String(consulta).toUpperCase()
+  let numeroClienteC
+  if (numeroCliente !== '000000000') {
+    numeroClienteC = complete(numeroCliente, 9, ' ')
+  } else {
+    numeroClienteC = numeroCliente
   }
-};
-setTimeout(() => {
-  menu();
-}, 0);
-openConnetion()
-sendData('  CONIBSV008749897000000000TD        ') // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
-//let espacios = (w) => {
-//  let white = ' '
-//  let espacios = white.padEnd(w)
-//
-//  console.log(espacios.split(" ").length - 1)
-//  return espacios
-//}
-//let servicio = `  000000008749897${espacios(84)}a`
-//console.log(servicio)
-//sendData(`  000000008749897${espacios(84)}`) // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde
+  return `${servicioU}${nacionalidadU}${ciC}${numeroClienteC}${consultaU}`
+})
+
+let complete = ((str, pos, char) => {
+
+  if (str.length < Number(pos)) {
+    let comp = Number(pos) - String(str).length
+    return String(char).repeat(comp) + str
+  }
+})
+
+openConnetion();
+let servicio = 'conibs' //readlineSync.question(`coloque el servicio`.green)
+let nacionalidad = 'v' //readlineSync.question(`coloque nacionalidad`.green)
+let ci = '15613504' //readlineSync.question(`coloque la cedula de identidad`.green)
+let consulta = 'al' //readlineSync.question(`coloque tipo de consulta`.green)
+sendFull(servicio, nacionalidad, ci, consulta)
+
+
+//sendData('  CONIBSV013112617000000000AL        ') // la trama debe tener 2 espacios en blanco para dar la respuesta que corresponde

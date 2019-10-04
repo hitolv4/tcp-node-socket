@@ -1,5 +1,6 @@
 const net = require('net');
 const colors = require('colors')
+const serv = require('./servicios')
 const {
   spacios,
   comibs
@@ -17,8 +18,9 @@ server.on('connection', (socket) => {
 
     if (data.length === spacios + comibs) {
       console.log('String cumple con parametros')
-      socket.write(`Server says :hello ${remoteaddress} you send ${data}`)
+      socket.write(serv.conibs(data))
     } else {
+      socket.write(`string no cumple con parametros el string mide ${data.length}`)
       console.log(`string no cumple con parametros el string mide ${data.length}`)
     }
   })
