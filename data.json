@@ -4,7 +4,7 @@
 
     "servicios":{
 
-        "conibs":{
+        "CONIBS":{
             "tiposConsulta":{
                 "CL":"datos del Cliente",
                 "TD":"Tarjeta de Debito",
@@ -38,8 +38,8 @@
                     "codigoServicioNomina":"6",
                     "codigoServicioProveedores":"6",
                     "diaHabil":"1",
-                    "proximoDiaHabli":"8",
-                    "fechaNaciomento":"8"
+                    "proximoDiaHabil":"8",
+                    "fechaNacimiento":"8"
                 },
                 "TD":{
                     "consulta":"3",
@@ -182,6 +182,16 @@
                     }
                 }
             }
+        },
+        "TRBLCPRO":{
+            "retorno":{
+                "nacionalidad":"1",
+                "cedula":"2",
+                "id":"2",
+                "pregunta":"45",
+                "respuesta":"1",
+                "limite":"4"
+            }
         }
     },
     "cliente": {
@@ -213,7 +223,170 @@
                 "codProveedor": "",
                 "diaHabilConsulta": "S",
                 "proximoDiaHabil": "01011234",
-                "fechaNacimiento": "18031965"
+                "fechaNacimiento": "18031965",
+                "cuentas": {
+                    "c01750391030011007704":{
+                        "cuenta":"11007704",
+                        "cuentaFull":"01750391030011007704",
+                        "status":"A",
+                        "aplicacion":"01",
+                        "tipoCuenta":"CCNR",
+                        "subProducto":"CNRN",
+                        "moneda":"BS.",
+                        "oficina":"391",
+                        "descripcionProducto":"CUENTA CORRIENTE NO REMUNERADA",
+                        "saldoTotal":"0,00",
+                        "diferido":"0,00",
+                        "retenido":"0,00",
+                        "disponible":"0,00",
+                        "firmasConjuntas":"N"
+                    },
+                    "c01750394460024048022":{
+                        "cuenta":"24048022",
+                        "cuentaFull":"01750394460024048022",
+                        "status":"A",
+                        "aplicacion":"04",
+                        "tipoCuenta":"CAHO",
+                        "subProducto":"CAPN",
+                        "moneda":"BS.",
+                        "oficina":"394",
+                        "descripcionProducto":"CUENTAS DE AHORROS",
+                        "saldoTotal":"359341,74",
+                        "diferido":"0,00",
+                        "retenido":"0,00",
+                        "disponible":"359341,74",
+                        "firmasConjuntas":"N"
+                    },
+                    "c01750050310070456562":{
+                        "cuenta":"70456562",
+                        "cuentaFull":"01750050310070456562",
+                        "status":"A",
+                        "aplicacion":"01",
+                        "tipoCuenta":"CCNR",
+                        "subProducto":"CNRV",
+                        "moneda":"BS.",
+                        "oficina":"50",
+                        "descripcionProducto":"CUENTA CORRIENTE NO REMUNERADA",
+                        "saldoTotal":"0,00",
+                        "diferido":"0,00",
+                        "retenido":"0,00",
+                        "disponible":"0,00",
+                        "firmasConjuntas":"N"
+                    },
+                    "c01750394420073374226":{
+                        "cuenta":"73374226",
+                        "cuentaFull":"01750394420073374226",
+                        "status":"A",
+                        "aplicacion":"01",
+                        "tipoCuenta":"CCNR",
+                        "subProducto":"CNRN",
+                        "moneda":"BS.",
+                        "oficina":"394",
+                        "descripcionProducto":"CUENTA CORRIENTE NO REMUNERADA",
+                        "saldoTotal":"1472646,74",
+                        "diferido":"0,00",
+                        "retenido":"0,00",
+                        "disponible":"1472646,74",
+                        "firmasConjuntas":"N"
+                    }
+
+                },
+             "tarjetasCredito": {
+                 "t4448066322005607":{
+                    "numeroCuenta":"4448066322005607",
+                    "numeroTarjeta":"4448066322005607",
+                    "plazo":"06",
+                    "limiteCredito":"6000000,00",
+                    "disponible":"3241922,82",
+                    "saldoDeudor":"2758077,18",
+                    "pagoMinimo":"0,00",
+                    "pagarAntes":"16082019",
+                    "saldoUltimaFacturacion":"1261993,68",
+                    "fechaCorte":"28072019",
+                    "marcaProducto":"Visa Platinum"
+                 },
+                 "t5213056312011285":{
+                    "numeroCuenta":"5213056312011285",
+                    "numeroTarjeta":"5213056312011285",
+                    "plazo":"06",
+                    "limiteCredito":"6000000,00",
+                    "disponible":"3241922,82",
+                    "saldoDeudor":"3018509,26",
+                    "pagoMinimo":"70993,88",
+                    "pagarAntes":"09082019",
+                    "saldoUltimaFacturacion":"1253107,43",
+                    "fechaCorte":"22072019",
+                    "marcaProducto":"Master Platinum"
+                 }
+             },
+             "preguntaSecreta":{
+                "p01":{
+                   "id":"01",
+                   "pregunta":"POSEE CREDITO DE VEHICULO 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p02":{
+                   "id":"02",
+                   "pregunta":"POSEE TARJETA DE CREDITO VISA 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p03":{
+                   "id":"03",
+                   "pregunta":"POSEE TARJETA DE CREDITO MASTER 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p04":{
+                   "id":"04",
+                   "pregunta":"POSEE TARJETA CREDITO VIVIR BIEN 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p05":{
+                   "id":"05",
+                   "pregunta":"POSEE TARJETA SOCIALISTA 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p06":{
+                   "id":"06",
+                   "pregunta":"POSEE CUENTA AHORRO VIRTUAL 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p07":{
+                   "id":"07",
+                   "pregunta":"CUENTA CORRIENTE VIRTUAL 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p08":{
+                   "id":"08",
+                   "pregunta":"POSEE CTA NI#OS(AS) DE LA PATRIA 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p09":{
+                   "id":"09",
+                   "pregunta":"POSEE CREDITO TURISMO 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p10":{
+                   "id":"10",
+                   "pregunta":"POSEE  CREDITO COMERCIAL 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p11":{
+                   "id":"11",
+                   "pregunta":"POSEE CREDITO MANUFACTURERO 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p12":{
+                   "id":"12",
+                   "pregunta":"POSEE TARJ. DEB. JUBIL. Y PENS. 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                },
+                "p13":{
+                   "id":"13",
+                   "pregunta":"POSEE CUENTA MONEDA EXTRANJERA 1(SI) O 2(NO)",
+                   "respuesta":"N" 
+                }
+            }   
+
             },
             "u15613504": {
                 "nacionalidad": "V",
