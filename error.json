@@ -1,0 +1,10 @@
+{
+    "errores":{
+        "trasferencias":{
+            "00":"transaccion exitosa",
+            "07":"numero de cuenta origen no existe",
+            "14":"numero de cuenta destino no existe",
+            "48":"solicitud no puede ser procesada"
+        }
+    }
+}

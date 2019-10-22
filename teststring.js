@@ -3,11 +3,11 @@ const countString = (string) => string.length
 const stringSplit = (string => {
   return string.split(" ")
 });
-let arr = data.servicios.CONIBS.retorno.TC
+let arr = data.servicios.BLTRPR.retorno
 let arrU = data.cliente.u26596812
-let STRING = '#CONIBSV008749897000000000TC         TC4448066322005607444806632200560706        6000000,00         3241922,82         2758077,18               0,00 16082019        1261993,68 28072019Visa Platinum        TC5213056312011285521305631201128506        6000000,00         3241922,82         3018509,26           70993,88 09082019        1253107,43 22072019Master Platinum      FF'
-let string = '�V01311261702POSEE TARJETA DE CREDITO VISA 1(SI) O 2(NO)  S05POSEE TARJETA SOCIALISTA 1(SI) O 2(NO)       N08POSEE CTA NI#OS(AS) DE LA PATRIA 1(SI)O 2(NO)N11POSEE CREDITO MANUFACTURERO 1(SI) O 2(NO)    N'
-let test = 'PV00874989709POSEE CREDITO TURISMO 1(SI) O 2(NO)          N11POSEE CREDITO MANUFACTURERO 1(SI) O 2(NO)    N11POSEE CREDITO MANUFACTURERO 1(SI) O 2(NO)    N10POSEE  CREDITO COMERCIAL 1(SI) O 2(NO)       N'
+let stringR = 'BLTRPR0100transaccion exitosa                               114318047000000000100000000000000000000000000000000000000000000000000000000147164600'
+let string = 'BLTRPR0149Cuenta Origen No Pertenece Al Cliente                                                                                  000000000000000' //BLTRPR010265968120175039442007337422601750394460024048022V0008749897QUINTERO CARRILLO, JOSE                 000000000100000                                                                                                              --
+let test = 'BLTRPR0114numero de cuenta destino no existe                                                                                     000000000000000'
 let acu = 0
 
 let analizar = ((string, llave, ini, pos) => {
@@ -21,10 +21,24 @@ Object.keys(arr).forEach(el => {
 console.log(`total de caracteres del servicio ${string.slice(1,3)}:  ${acu}`)
 console.log(`Test string:  ${countString(test)}`)
 console.log(`string as400: ${countString(string)}`)
+console.log(`string solo ${countString('000000000000000')}`)
 
+let complete = ((str, pos, char, side) => {
+  if (String(str).length < Number(pos)) {
+    let comp = Number(pos) - String(str).length
+    if (side === 'izq') {
+      return String(char).repeat(comp) + str
+    } else if (side === 'der') {
+      return str + String(char).repeat(comp)
+    } else if (side === 'monto') {
+      return String(char).repeat(comp - 1) + str + ' '
+    }
+  } else {
+    return str
+  }
+})
 
-
-
+console.log(`blacos:ini--${complete('',110,' ','izq')}--fin`)
 //console.log(string.split('CONIBS')[1][0])
 //console.log(analizar(string, 'servicio', 0, 3))
 //console.log(` cuenta:${string.slice(3, 15)}`)

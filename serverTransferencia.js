@@ -5,7 +5,7 @@ const {
   spacios,
   comibs
 } = require('./param')
-const port = 6010;
+const port = 6030;
 
 let server = net.createServer();
 
@@ -15,23 +15,7 @@ server.on('connection', (socket) => {
 
   socket.on('data', (data) => {
     console.log(`data from ${remoteaddress}  ${data}`.green)
-    let servicio = data.toString().slice(2, 8)
-    switch (servicio) {
-      case 'CONIBS':
-        if (data.length === spacios + comibs) {
-          console.log('String cumple con parametros')
-          socket.write(serv.conibs(data))
-        } else {
-          socket.write(`string no cumple con parametros el string mide ${data.length}`)
-          console.log(`string no cumple con parametros el string mide ${data.length}`)
-        }
-        break
-      default:
-        console.log('servicio invalido')
-        socket.write(`Servicio invalido`)
-
-        break
-    }
+    socket.write(serv.bltrpr(data))
 
   })
 

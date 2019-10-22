@@ -3,7 +3,6 @@
 {
 
     "servicios":{
-
         "CONIBS":{
             "tiposConsulta":{
                 "CL":"datos del Cliente",
@@ -192,6 +191,34 @@
                 "respuesta":"1",
                 "limite":"4"
             }
+        },
+        "BLTRPR":{
+            "parametros":{
+                "servicio":"6",
+                "tipoTransaccion":"2",
+                "clinteibs":"9",
+                "cuentaOrigen":"20",
+                "cuentaDestino":"20",
+                "nacionalidad":"1",
+                "cedulaDestino":"10",
+                "nombreClienteDestino":"40",
+                "montotrasferencia":"15",
+                "resto":"110"
+            },
+            "retorno":{
+                "servicio":"6",
+                "tipoTrasaccion":"2",
+                "codError":"2",
+                "descripcionError":"50",
+                "codReferencia":"9",
+                "montoTrasferencia":"15",
+                "montoComisionInterbancaria":"15",
+                "montoIGTF":"15",
+                "montoIGTFComisionInterbancaria":"15",
+                "saldoDisponible":"15"
+            }
+
+
         }
     },
     "cliente": {
